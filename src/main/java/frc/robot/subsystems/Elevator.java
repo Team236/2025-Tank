@@ -5,25 +5,29 @@
 package frc.robot.subsystems;
 
 
-import com.revrobotics.CANSparkMax;
+
 import com.revrobotics.RelativeEncoder;
+import com.revrobotics.spark.SparkBase.PersistMode;
+import com.revrobotics.spark.SparkBase.ResetMode;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
+import com.revrobotics.spark.SparkMax;
 //import com.revrobotics.SparkPIDController;
-import com.revrobotics.CANSparkBase.ControlType;
-import com.revrobotics.CANSparkLowLevel.MotorType;
+//import com.revrobotics.CANSparkBase.ControlType;
+//import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.spark.config.SparkMaxConfig;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import edu.wpi.first.wpilibj.PneumaticsModuleType;
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.Constants;
-import frc.robot.Robot;
 
 public class Elevator extends SubsystemBase {
   //USING WPILib PID, not SparkMax PID.  SparkMax PID is not consistent - intermittent issues
-  private CANSparkMax leftElevatorMotor, rightElevatorMotor;
+  private SparkMax leftElevatorMotor, rightElevatorMotor;
+  private SparkMaxConfig leftConfig, rightConfig;
   //private SparkPIDController leftPIDController, rightPIDController;
   public RelativeEncoder leftElevEncoder, rightElevEncoder;
   private DigitalInput elevatorTopLimit, elevatorBottomLimit;
@@ -32,18 +36,21 @@ public class Elevator extends SubsystemBase {
   /** Creates a new Elevator. */
     //TODO:  CHECK IF ELEVATOR POSITION HOLDS WHEN PID up ends
   public Elevator() {
-    leftElevatorMotor = new CANSparkMax(Constants.MotorControllers.ID_ELEVATOR_LEFT, MotorType.kBrushless); 
-    rightElevatorMotor = new CANSparkMax(Constants.MotorControllers.ID_ELEVATOR_RIGHT, MotorType.kBrushless); 
+    leftElevatorMotor = new SparkMax(Constants.MotorControllers.ID_ELEVATOR_LEFT, MotorType.kBrushless); 
+    rightElevatorMotor = new SparkMax(Constants.MotorControllers.ID_ELEVATOR_RIGHT, MotorType.kBrushless); 
 
-    leftElevatorMotor.restoreFactoryDefaults();
-    rightElevatorMotor.restoreFactoryDefaults();
+    leftConfig = new SparkMaxConfig();
+    leftConfig.inverted(true);
+    rightConfig = new SparkMaxConfig();
+    rightConfig.inverted(false);
 
-    leftElevatorMotor.setSmartCurrentLimit(Constants.MotorControllers.SMART_CURRENT_LIMIT);
-    rightElevatorMotor.setSmartCurrentLimit(Constants.MotorControllers.SMART_CURRENT_LIMIT);
- 
-    leftElevatorMotor.setInverted(true);
-    rightElevatorMotor.setInverted(false);
-
+    //leftElevatorMotor.restoreFactoryDefaults();
+    // rightElevatorMotor.restoreFactoryDefaults();
+    // leftElevatorMotor.setSmartCurrentLimit(Constants.MotorControllers.SMART_CURRENT_LIMIT);
+    // rightElevatorMotor.setSmartCurrentLimit(Constants.MotorControllers.SMART_CURRENT_LIMIT);
+    leftElevatorMotor.configure(leftConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+    rightElevatorMotor.configure(rightConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+    
     //leftElevatorMotor.follow(rightElevatorMotor);
     //leftPIDController = leftElevatorMotor.getPIDController();
     // rightPIDController = rightElevatorMotor.getPIDController();
