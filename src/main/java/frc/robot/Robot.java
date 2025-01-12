@@ -4,7 +4,8 @@
 
 package frc.robot;
 
-import com.kauailabs.navx.frc.AHRS;
+
+import com.studica.frc.AHRS;
 
 import edu.wpi.first.cameraserver.CameraServer;
 import edu.wpi.first.cscore.UsbCamera;
@@ -18,9 +19,9 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.CommandScheduler;
 import frc.robot.commands.CartridgeAndTilt.PIDCartridgeMotors;
-import frc.robot.subsystems.Cartridge;
+// import frc.robot.subsystems.Cartridge;
 import frc.robot.subsystems.Elevator;
-import frc.robot.subsystems.Intake;
+// import frc.robot.subsystems.Intake;
 
 /**
  * The VM is configured to automatically run this class, and to call the functions corresponding to
@@ -31,7 +32,7 @@ import frc.robot.subsystems.Intake;
 public class Robot extends TimedRobot {
   private Command m_autonomousCommand;
   private Compressor compressor;
-  public AHRS navx = new AHRS();
+  // public AHRS navx = new AHRS(null);
   public UsbCamera usbCamera0;
   public static Servo cameraServo;
   public static boolean isFloor;
@@ -73,7 +74,7 @@ public class Robot extends TimedRobot {
 
 
    //Set the counter to zero at the start
-   Intake.resetCounter();
+  //  Intake.resetCounter();
   }
 
   /**

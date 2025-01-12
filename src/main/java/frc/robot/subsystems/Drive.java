@@ -4,8 +4,11 @@
 
 package frc.robot.subsystems;
 
-import com.revrobotics.CANSparkMax;
-import com.revrobotics.CANSparkLowLevel.MotorType;
+import com.revrobotics.spark.SparkMax;
+import com.revrobotics.spark.config.SparkMaxConfig;
+import com.revrobotics.spark.SparkBase.PersistMode;
+import com.revrobotics.spark.SparkBase.ResetMode;
+import com.revrobotics.spark.SparkLowLevel.MotorType;
 import edu.wpi.first.math.filter.SlewRateLimiter;
 import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Encoder;
@@ -21,33 +24,45 @@ import frc.robot.Constants.DriveConstants;
 import frc.robot.Constants.Thrustmaster;
 
 public class Drive extends SubsystemBase {
-  public CANSparkMax leftFront, leftRear, rightFront, rightRear;
+  public SparkMax leftFront, leftRear, rightFront, rightRear;
   public DifferentialDrive diffDrive;
   private DoubleSolenoid transmission;
+  private SparkMaxConfig leftFrontConfig, leftRearConfig, rightFrontConfig, rightRearConfig;
 
   //these are external encoders not SparkMAX
   private Encoder leftEncoder, rightEncoder;
 
   /** Creates a new Drive. */
   public Drive() {
-    leftFront = new CANSparkMax(Constants.MotorControllers.ID_LEFT_FRONT, MotorType.kBrushless);
-    leftRear = new CANSparkMax(Constants.MotorControllers.ID_LEFT_REAR, MotorType.kBrushless);
-    rightFront = new CANSparkMax(Constants.MotorControllers.ID_RIGHT_FRONT, MotorType.kBrushless);
-    rightRear = new CANSparkMax(Constants.MotorControllers.ID_RIGHT_REAR, MotorType.kBrushless);
+    leftFront = new SparkMax(Constants.MotorControllers.ID_LEFT_FRONT, MotorType.kBrushless);
+    leftRear = new SparkMax(Constants.MotorControllers.ID_LEFT_REAR, MotorType.kBrushless);
+    rightFront = new SparkMax(Constants.MotorControllers.ID_RIGHT_FRONT, MotorType.kBrushless);
+    rightRear = new SparkMax(Constants.MotorControllers.ID_RIGHT_REAR, MotorType.kBrushless);
 
-    leftFront.restoreFactoryDefaults();
-    rightFront.restoreFactoryDefaults();
+    // leftFront.restoreFactoryDefaults();
+    // rightFront.restoreFactoryDefaults();
 
-    leftFront.setInverted(false);
-    rightFront.setInverted(true);
- 
-    leftFront.setSmartCurrentLimit(Constants.MotorControllers.SMART_CURRENT_LIMIT);
-    rightFront.setSmartCurrentLimit(Constants.MotorControllers.SMART_CURRENT_LIMIT);
-    leftRear.setSmartCurrentLimit(Constants.MotorControllers.SMART_CURRENT_LIMIT);
-    rightRear.setSmartCurrentLimit(Constants.MotorControllers.SMART_CURRENT_LIMIT);
+    leftFrontConfig = new SparkMaxConfig();
+    leftFrontConfig.inverted(false);
+    leftFrontConfig.openLoopRampRate(Constants.MotorControllers.OPEN_RAMP_RATE);
 
-    leftRear.follow(leftFront);
-    rightRear.follow(rightFront);
+    rightFrontConfig = new SparkMaxConfig();
+    rightFrontConfig.inverted(true);
+    rightFrontConfig.openLoopRampRate(Constants.MotorControllers.OPEN_RAMP_RATE);
+    
+    leftRearConfig = new SparkMaxConfig();
+    leftRearConfig.follow(Constants.MotorControllers.ID_LEFT_FRONT);
+    
+    rightRearConfig = new SparkMaxConfig();
+    rightRearConfig.follow(Constants.MotorControllers.ID_RIGHT_FRONT);
+    
+    leftFront.configure(leftFrontConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+    rightFront.configure(rightFrontConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+    leftRear.configure(leftRearConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+    rightRear.configure(rightRearConfig, ResetMode.kResetSafeParameters, PersistMode.kNoPersistParameters);
+    
+    // leftRear.follow(leftFront);
+    // rightRear.follow(rightFront);
 
     //creates a new diffdrive
     diffDrive = new DifferentialDrive(leftFront, rightFront); 
@@ -83,10 +98,10 @@ public boolean isInHighGear(){
 }
 //CAREFUL!! MUST USE RAMPRATE EXACTLY IN ORDER AS SHOWN IN ARCADE DRIVE COMMAND
 //OR FOLLOWER STOPS WORKING!!!!!
-public void openRampRate() {
-  leftFront.setOpenLoopRampRate(Constants.MotorControllers.OPEN_RAMP_RATE);
-  rightFront.setOpenLoopRampRate(Constants.MotorControllers.OPEN_RAMP_RATE);
-}
+// public void openRampRate() {
+//   leftFront.setOpenLoopRampRate(Constants.MotorControllers.OPEN_RAMP_RATE);
+//   rightFront.setOpenLoopRampRate(Constants.MotorControllers.OPEN_RAMP_RATE);
+// }
 
 public void setLeftSpeed(double speed) {
   leftFront.set(speed);
