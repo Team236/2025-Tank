@@ -91,11 +91,11 @@ public class RobotContainer {
 
   //create instance of each subsystem
   private final Drive drive = new Drive();
-  private final Intake intake = new Intake();
-  private final Cartridge cartridge = new Cartridge();
-  private final AmpTrap ampTrap = new AmpTrap();
+  // private final Intake intake = new Intake();
+  // private final Cartridge cartridge = new Cartridge();
+  // private final AmpTrap ampTrap = new AmpTrap();
   private final Elevator elevator = new Elevator();
-  private final Tilt tilt = new Tilt();
+  // private final Tilt tilt = new Tilt();
 
   //create instance of each command
 //DRIVE COMMANDS
@@ -107,56 +107,56 @@ public class RobotContainer {
   //private final PIDTurn pidTurnPodtoWoofRed = new PIDTurn(drive, Constants.DriveConstants.TURN_ANGLE_RED_POD_TO_SPKR); 
   //private final PIDTurn pidTurnPodtoWoofBlue = new PIDTurn(drive, Constants.DriveConstants.TURN_ANGLE_BLUE_POD_TO_SPKR);
 //SHOTS
-  private final AmpShot ampShot = new AmpShot(intake, cartridge, ampTrap, tilt);
-  private final PIDCartridgeShot pidPodiumShot = new PIDCartridgeShot(intake, cartridge, tilt, Constants.Intake.INTAKE_SPEED, Constants.CartridgeShooter.PODIUM_PID_LEFT_RPM, Constants.CartridgeShooter.PODIUM_PID_RIGHT_RPM, Constants.Tilt.TILT_ENC_REVS_PODIUM);
-  private final PIDCartridgeShot pidCenterNoteShot = new PIDCartridgeShot(intake, cartridge, tilt, Constants.Intake.INTAKE_SPEED, Constants.CartridgeShooter.PODIUM_PID_LEFT_RPM, Constants.CartridgeShooter.PODIUM_PID_RIGHT_RPM, Constants.Tilt.TILT_ENC_REVS_CTR_NOTE);
-  private final PIDCartridgeShot pidWooferShot = new PIDCartridgeShot(intake, cartridge, tilt, Constants.Intake.INTAKE_SPEED, Constants.CartridgeShooter.WOOFER_PID_LEFT_RPM, Constants.CartridgeShooter.WOOFER_PID_RIGHT_RPM, Constants.Tilt.TILT_ENC_REVS_WOOFER);
-  private final PIDLLShot pidLLShot = new PIDLLShot(intake, cartridge, tilt, drive, 0);
-  private final PIDThrow pidThrow= new PIDThrow(intake, cartridge, tilt, drive);
-  private final ShootButtonRelease throwRelease = new ShootButtonRelease(intake, cartridge, tilt, Constants.Intake.INTAKE_SPEED, Constants.CartridgeShooter.PODIUM_PID_LEFT_RPM, Constants.CartridgeShooter.PODIUM_PID_RIGHT_RPM);
+  // private final AmpShot ampShot = new AmpShot(intake, cartridge, ampTrap, tilt);
+  // private final PIDCartridgeShot pidPodiumShot = new PIDCartridgeShot(intake, cartridge, tilt, Constants.Intake.INTAKE_SPEED, Constants.CartridgeShooter.PODIUM_PID_LEFT_RPM, Constants.CartridgeShooter.PODIUM_PID_RIGHT_RPM, Constants.Tilt.TILT_ENC_REVS_PODIUM);
+  // private final PIDCartridgeShot pidCenterNoteShot = new PIDCartridgeShot(intake, cartridge, tilt, Constants.Intake.INTAKE_SPEED, Constants.CartridgeShooter.PODIUM_PID_LEFT_RPM, Constants.CartridgeShooter.PODIUM_PID_RIGHT_RPM, Constants.Tilt.TILT_ENC_REVS_CTR_NOTE);
+  // private final PIDCartridgeShot pidWooferShot = new PIDCartridgeShot(intake, cartridge, tilt, Constants.Intake.INTAKE_SPEED, Constants.CartridgeShooter.WOOFER_PID_LEFT_RPM, Constants.CartridgeShooter.WOOFER_PID_RIGHT_RPM, Constants.Tilt.TILT_ENC_REVS_WOOFER);
+  // private final PIDLLShot pidLLShot = new PIDLLShot(intake, cartridge, tilt, drive, 0);
+  // private final PIDThrow pidThrow= new PIDThrow(intake, cartridge, tilt, drive);
+  // private final ShootButtonRelease throwRelease = new ShootButtonRelease(intake, cartridge, tilt, Constants.Intake.INTAKE_SPEED, Constants.CartridgeShooter.PODIUM_PID_LEFT_RPM, Constants.CartridgeShooter.PODIUM_PID_RIGHT_RPM);
 
 
 
-  private final PIDPodShotWithRedTurn pidPodShotWithRedTurn = new PIDPodShotWithRedTurn(intake, cartridge, tilt, drive);
-//AUTO COMMANDS
-  private final ModFrontTwoShot frontTwoShots = new ModFrontTwoShot(intake, cartridge, tilt, drive, elevator);
-  private final ModWooferLeft wooferLeft = new ModWooferLeft(intake, cartridge, tilt, drive, elevator);
-  private final ModWooferRight wooferRight = new ModWooferRight(intake, cartridge, tilt, drive, elevator);
-  private final OneWooferShot oneWooferShot = new OneWooferShot(intake, cartridge, tilt, drive, elevator);
-  private final L_RedToMidfield_2 leftRedToMidfield2 = new L_RedToMidfield_2(intake, cartridge, tilt, drive, elevator);
-  private final R_BlueToMidfield_2 rightBlueToMidfield2 = new R_BlueToMidfield_2(intake, cartridge, tilt, drive, elevator);
-  private final C_RedToMidfield_3 centerRedToMidfield3 = new C_RedToMidfield_3(intake, cartridge, tilt, drive, elevator);
-  private final C_BlueToMidfield_3 centerBlueToMidfield3 = new C_BlueToMidfield_3(intake, cartridge, tilt, drive, elevator);
-  private final C_Red_2Speaker_1Amp centerRed2Speaker1Amp = new C_Red_2Speaker_1Amp(intake, cartridge, tilt, drive, elevator, ampTrap);
-  private final C_Blue_2Speaker_1Amp centerBlue2Speaker1Amp = new C_Blue_2Speaker_1Amp(intake, cartridge, tilt, drive, elevator, ampTrap);
-  private final R_Blue_1Spkr_1Amp_ToMidfield rightBlue1Spkr1AmpToMid = new R_Blue_1Spkr_1Amp_ToMidfield(intake, cartridge, tilt, drive, elevator, ampTrap);
-  private final L_Red_1Spkr_1Amp_ToMidfield leftRed1Spkr1AmpToMid = new L_Red_1Spkr_1Amp_ToMidfield(intake, cartridge, tilt, drive, elevator, ampTrap);
-  private final R_RedToMidfield_2 rightRedToMidfield2 = new R_RedToMidfield_2(intake, cartridge, tilt, drive, elevator);
-  private final L_BlueToMidfield_2 leftBlueToMidfield2 = new L_BlueToMidfield_2(intake, cartridge, tilt, drive, elevator);
-  private final AmpBlueRight ampBlueRight = new AmpBlueRight(intake, cartridge, ampTrap, tilt, drive, elevator);
-  private final AmpRedLeft ampRedLeft = new AmpRedLeft(intake, cartridge, ampTrap, tilt, drive, elevator);
-  private final L_WooferShotPullOut l_WooferShotPullOut = new L_WooferShotPullOut(intake, cartridge, tilt, drive, elevator);
-  private final R_WooferShotPullOut r_WooferShotPullOut = new R_WooferShotPullOut(intake, cartridge, tilt, drive, elevator);
+//   private final PIDPodShotWithRedTurn pidPodShotWithRedTurn = new PIDPodShotWithRedTurn(intake, cartridge, tilt, drive);
+// //AUTO COMMANDS
+//   private final ModFrontTwoShot frontTwoShots = new ModFrontTwoShot(intake, cartridge, tilt, drive, elevator);
+//   private final ModWooferLeft wooferLeft = new ModWooferLeft(intake, cartridge, tilt, drive, elevator);
+//   private final ModWooferRight wooferRight = new ModWooferRight(intake, cartridge, tilt, drive, elevator);
+//   private final OneWooferShot oneWooferShot = new OneWooferShot(intake, cartridge, tilt, drive, elevator);
+//   private final L_RedToMidfield_2 leftRedToMidfield2 = new L_RedToMidfield_2(intake, cartridge, tilt, drive, elevator);
+//   private final R_BlueToMidfield_2 rightBlueToMidfield2 = new R_BlueToMidfield_2(intake, cartridge, tilt, drive, elevator);
+//   private final C_RedToMidfield_3 centerRedToMidfield3 = new C_RedToMidfield_3(intake, cartridge, tilt, drive, elevator);
+//   private final C_BlueToMidfield_3 centerBlueToMidfield3 = new C_BlueToMidfield_3(intake, cartridge, tilt, drive, elevator);
+//   private final C_Red_2Speaker_1Amp centerRed2Speaker1Amp = new C_Red_2Speaker_1Amp(intake, cartridge, tilt, drive, elevator, ampTrap);
+//   private final C_Blue_2Speaker_1Amp centerBlue2Speaker1Amp = new C_Blue_2Speaker_1Amp(intake, cartridge, tilt, drive, elevator, ampTrap);
+//   private final R_Blue_1Spkr_1Amp_ToMidfield rightBlue1Spkr1AmpToMid = new R_Blue_1Spkr_1Amp_ToMidfield(intake, cartridge, tilt, drive, elevator, ampTrap);
+//   private final L_Red_1Spkr_1Amp_ToMidfield leftRed1Spkr1AmpToMid = new L_Red_1Spkr_1Amp_ToMidfield(intake, cartridge, tilt, drive, elevator, ampTrap);
+//   private final R_RedToMidfield_2 rightRedToMidfield2 = new R_RedToMidfield_2(intake, cartridge, tilt, drive, elevator);
+//   private final L_BlueToMidfield_2 leftBlueToMidfield2 = new L_BlueToMidfield_2(intake, cartridge, tilt, drive, elevator);
+//   private final AmpBlueRight ampBlueRight = new AmpBlueRight(intake, cartridge, ampTrap, tilt, drive, elevator);
+//   private final AmpRedLeft ampRedLeft = new AmpRedLeft(intake, cartridge, ampTrap, tilt, drive, elevator);
+//   private final L_WooferShotPullOut l_WooferShotPullOut = new L_WooferShotPullOut(intake, cartridge, tilt, drive, elevator);
+//   private final R_WooferShotPullOut r_WooferShotPullOut = new R_WooferShotPullOut(intake, cartridge, tilt, drive, elevator);
 
-//INTAKE COMMANDS
-  private final IntakeWithCounter intakeWithCounter = new IntakeWithCounter(intake, Constants.Intake.INTAKE_SPEED);
-  private final ManualIntake manualIntake = new ManualIntake(intake, Constants.Intake.INTAKE_SPEED);
-  private final ManualIntake manualEject = new ManualIntake(intake, Constants.Intake.EJECT_SPEED);
+// //INTAKE COMMANDS
+//   private final IntakeWithCounter intakeWithCounter = new IntakeWithCounter(intake, Constants.Intake.INTAKE_SPEED);
+//   private final ManualIntake manualIntake = new ManualIntake(intake, Constants.Intake.INTAKE_SPEED);
+//   private final ManualIntake manualEject = new ManualIntake(intake, Constants.Intake.EJECT_SPEED);
 //CARTRIDGE AND TILT COMMANDS
-private final PIDCartridgeMotors pidCartridgeMotors = new PIDCartridgeMotors(cartridge, Constants.CartridgeShooter.PODIUM_PID_LEFT_RPM, Constants.CartridgeShooter.PODIUM_PID_RIGHT_RPM);
-  private final ManualExtCartridge manualExtCartridge = new ManualExtCartridge(tilt, Constants.Tilt.MAN_EXT_SPEED);
-  private final ManualRetractCartridge manualRetCartridge = new ManualRetractCartridge(tilt, Constants.Tilt.MAN_RET_SPEED);
-  private final PIDCartridgeTilt podiumTilt = new PIDCartridgeTilt(tilt, Constants.Tilt.TILT_ENC_REVS_PODIUM);
-  private final PIDCartridgeTilt wooferTilt = new PIDCartridgeTilt(tilt, Constants.Tilt.TILT_ENC_REVS_WOOFER);
-  private final PIDCartridgeTilt stowTilt = new PIDCartridgeTilt(tilt, Constants.Tilt.TILT_ENC_REVS_STOW);
-  private final PidLLTilt pidLLTilt = new PidLLTilt(tilt, 0);
-  private final ShootButtonPressandHold shootPressAndHold = new ShootButtonPressandHold(intake, cartridge, tilt, Constants.Tilt.TILT_ENC_REVS_WOOFER);
-  private final ShootButtonRelease shootButtonRelease = new ShootButtonRelease(intake, cartridge, tilt, Constants.Intake.INTAKE_SPEED,  Constants.CartridgeShooter.PODIUM_PID_LEFT_RPM, Constants.CartridgeShooter.PODIUM_PID_RIGHT_RPM);
-  //private final ManualPodiumSpeed manualPodiumSpeed = new ManualPodiumSpeed(cartridge);
-  //private final ManualWooferSpeed manualWooferSpeed = new ManualWooferSpeed(cartridge);
-  // private final PIDCartridgeMotors pidPodiumSpeed = new PIDCartridgeMotors(cartridge, Constants.CartridgeShooter.PODIUM_PID_LEFT_RPM, Constants.CartridgeShooter.PODIUM_PID_RIGHT_RPM);
-  //private final PIDCartridgeMotors pidWooferSpeed = new PIDCartridgeMotors(cartridge, Constants.CartridgeShooter.WOOFER_PID_LEFT_RPM, Constants.CartridgeShooter.WOOFER_PID_RIGHT_RPM);
-  private final RunIntkCartMotors manualIntkCartMotors = new RunIntkCartMotors(intake, cartridge, Constants.Intake.INTAKE_SPEED, Constants.CartridgeShooter.PODIUM_PID_LEFT_RPM, Constants.CartridgeShooter.PODIUM_PID_RIGHT_RPM);
+// private final PIDCartridgeMotors pidCartridgeMotors = new PIDCartridgeMotors(cartridge, Constants.CartridgeShooter.PODIUM_PID_LEFT_RPM, Constants.CartridgeShooter.PODIUM_PID_RIGHT_RPM);
+//   private final ManualExtCartridge manualExtCartridge = new ManualExtCartridge(tilt, Constants.Tilt.MAN_EXT_SPEED);
+//   private final ManualRetractCartridge manualRetCartridge = new ManualRetractCartridge(tilt, Constants.Tilt.MAN_RET_SPEED);
+//   private final PIDCartridgeTilt podiumTilt = new PIDCartridgeTilt(tilt, Constants.Tilt.TILT_ENC_REVS_PODIUM);
+//   private final PIDCartridgeTilt wooferTilt = new PIDCartridgeTilt(tilt, Constants.Tilt.TILT_ENC_REVS_WOOFER);
+//   private final PIDCartridgeTilt stowTilt = new PIDCartridgeTilt(tilt, Constants.Tilt.TILT_ENC_REVS_STOW);
+//   private final PidLLTilt pidLLTilt = new PidLLTilt(tilt, 0);
+//   private final ShootButtonPressandHold shootPressAndHold = new ShootButtonPressandHold(intake, cartridge, tilt, Constants.Tilt.TILT_ENC_REVS_WOOFER);
+//   private final ShootButtonRelease shootButtonRelease = new ShootButtonRelease(intake, cartridge, tilt, Constants.Intake.INTAKE_SPEED,  Constants.CartridgeShooter.PODIUM_PID_LEFT_RPM, Constants.CartridgeShooter.PODIUM_PID_RIGHT_RPM);
+//   //private final ManualPodiumSpeed manualPodiumSpeed = new ManualPodiumSpeed(cartridge);
+//   //private final ManualWooferSpeed manualWooferSpeed = new ManualWooferSpeed(cartridge);
+//   // private final PIDCartridgeMotors pidPodiumSpeed = new PIDCartridgeMotors(cartridge, Constants.CartridgeShooter.PODIUM_PID_LEFT_RPM, Constants.CartridgeShooter.PODIUM_PID_RIGHT_RPM);
+//   //private final PIDCartridgeMotors pidWooferSpeed = new PIDCartridgeMotors(cartridge, Constants.CartridgeShooter.WOOFER_PID_LEFT_RPM, Constants.CartridgeShooter.WOOFER_PID_RIGHT_RPM);
+//   private final RunIntkCartMotors manualIntkCartMotors = new RunIntkCartMotors(intake, cartridge, Constants.Intake.INTAKE_SPEED, Constants.CartridgeShooter.PODIUM_PID_LEFT_RPM, Constants.CartridgeShooter.PODIUM_PID_RIGHT_RPM);
   //private final RunIntkCartAmpMotors runIntCartAmpMotors = new RunIntkCartAmpMotors(intake, cartridge, ampTrap,  Constants.Intake.INTAKE_SPEED, Constants.CartridgeShooter.AMP_PID_RPM, Constants.Amp.AMP_TRAP_MOTOR_SPEED);
 //ELEVATOR COMMANDS:
 
@@ -166,22 +166,22 @@ private final PIDDownToHeight pID3 = new PIDDownToHeight(elevator, 5);
 
   private final ManualUp manualUp = new ManualUp(elevator, Constants.Elevator.ELEV_UP_SPEED);
   private final ManualDown manualDown = new ManualDown(elevator, Constants.Elevator.ELEV_DOWN_SPEED);
-  private final PIDtoTopandStow pidtoTopandStow = new PIDtoTopandStow(elevator, tilt);
-  private final ClimbAtEnd climbAtEnd = new ClimbAtEnd(elevator, ampTrap, intake, tilt, cartridge);
-  private final ClimbNoBrakePID climbNoBrakePID = new ClimbNoBrakePID(elevator, ampTrap, intake, tilt, cartridge);
+  // private final PIDtoTopandStow pidtoTopandStow = new PIDtoTopandStow(elevator, tilt);
+  // private final ClimbAtEnd climbAtEnd = new ClimbAtEnd(elevator, ampTrap, intake, tilt, cartridge);
+  // private final ClimbNoBrakePID climbNoBrakePID = new ClimbNoBrakePID(elevator, ampTrap, intake, tilt, cartridge);
   private final BrakeToggle toggleBrake = new BrakeToggle(elevator);
-  private final ClimbAtEnd climbPIDWithManual = new ClimbAtEnd(elevator, ampTrap, intake, tilt, cartridge);
+  // private final ClimbAtEnd climbPIDWithManual = new ClimbAtEnd(elevator, ampTrap, intake, tilt, cartridge);
   //private final PIDUptoHeight pidToTop = new PIDUptoHeight(elevator, Constants.Elevator.MAX_HEIGHT);
   //private final PIDDownToHeight pidToBot = new PIDDownToHeight(elevator, Constants.Elevator.MIN_HEIGHT);
   //private final BrakeEngage engageBrake = new BrakeEngage(elevator);
   //private final PIDUptoHeight pidUpToMatchHeight = new PIDUptoHeight(elevator, Constants.Elevator.MATCH_HEIGHT);
 //CAMERA AND LIMELIGHT COMMANDS
-  private final LLAngle llAngle = new LLAngle(drive);
-  private final LLPressandHold llPressandHold = new LLPressandHold(intake, cartridge, tilt, drive, 0);
+  // private final LLAngle llAngle = new LLAngle(drive);
+  // private final LLPressandHold llPressandHold = new LLPressandHold(intake, cartridge, tilt, drive, 0);
  // private final CameraToggle toggleCameraAngle = new CameraToggle();
 //AMPTRAP COMMANDS:
  // private final AmpMotor ampMotorForward = new AmpMotor(ampTrap, Constants.Amp.AMP_TRAP_MOTOR_SPEED);
-  private final AmpMotor ampMotorReverse = new AmpMotor(ampTrap, Constants.Amp.AMP_TRAP_MOTOR_REVERSE_SPEED);
+  // private final AmpMotor ampMotorReverse = new AmpMotor(ampTrap, Constants.Amp.AMP_TRAP_MOTOR_REVERSE_SPEED);
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -266,22 +266,22 @@ private final PIDDownToHeight pID3 = new PIDDownToHeight(elevator, 5);
 
   //***** Aux Controller ******
   //SHOTS
-    a1.whileTrue(llPressandHold).onFalse(shootButtonRelease);
-    b1.whileTrue(shootPressAndHold).onFalse(shootButtonRelease);
-    y1.onTrue(ampShot);
-    x1.whileTrue(ampMotorReverse);
-    leftPov1.whileTrue(pidThrow).onFalse(throwRelease); 
+    // a1.whileTrue(llPressandHold).onFalse(shootButtonRelease);
+    // b1.whileTrue(shootPressAndHold).onFalse(shootButtonRelease);
+    // y1.onTrue(ampShot);
+    // x1.whileTrue(ampMotorReverse);
+    // leftPov1.whileTrue(pidThrow).onFalse(throwRelease); 
     //rightPov1.onTrue(pidPodShotWithRedTurn); 
   //ELEVATOR - zero manually before using PID
     upPov1.whileTrue(manualUp);
     downPov1.whileTrue(manualDown);
     lb1.onTrue(toggleBrake);
-    rb1 .onTrue(pidtoTopandStow);
-    view1.onTrue(climbNoBrakePID);
-    menu1.onTrue(climbAtEnd);
+    // rb1 .onTrue(pidtoTopandStow);
+    // view1.onTrue(climbNoBrakePID);
+    // menu1.onTrue(climbAtEnd);
   //CARTRIDGE TILT - zero before using PID
-    lm1.whileTrue(manualRetCartridge);
-    rm1.whileTrue(manualExtCartridge);
+    // lm1.whileTrue(manualRetCartridge);
+    // rm1.whileTrue(manualExtCartridge);
 
 
     // upPov.onTrue(frontTwoShots);
@@ -307,39 +307,39 @@ private final PIDDownToHeight pID3 = new PIDDownToHeight(elevator, 5);
    // SmartDashboard.putString("autokey", "Entering getAutoCommand now");
      Command command = null;
     //Swith 1 is in the "ON" spot on the box
-    if (!autoSwitch1.get() && autoSwitch2.get() && autoSwitch3.get() && autoSwitch4.get()) {
-      command = wooferLeft;
-    } else if (autoSwitch1.get() && !autoSwitch2.get() && autoSwitch3.get() && autoSwitch4.get()) {
-      command = frontTwoShots;
-    } else if (autoSwitch1.get() && autoSwitch2.get() && !autoSwitch3.get() && autoSwitch4.get()) {
-      command = oneWooferShot;
-    } else if (autoSwitch1.get() && autoSwitch2.get() && autoSwitch3.get() && !autoSwitch4.get()) {
-      command =  wooferRight;
-    } else if (!autoSwitch1.get() && !autoSwitch2.get() && autoSwitch3.get() && autoSwitch4.get()) {
-      command =  leftRedToMidfield2;
-    } else if (autoSwitch1.get() && autoSwitch2.get() && !autoSwitch3.get() && !autoSwitch4.get()) {
-      command = rightBlueToMidfield2;
-    } else if (!autoSwitch1.get() && !autoSwitch2.get() && !autoSwitch3.get() && autoSwitch4.get()) {
-      command = centerRedToMidfield3;
-    } else if (autoSwitch1.get() && !autoSwitch2.get() && !autoSwitch3.get() && !autoSwitch4.get()) {
-      command =  centerBlueToMidfield3;
-    } else if (!autoSwitch1.get() && !autoSwitch2.get() && autoSwitch3.get() && !autoSwitch4.get()) {
-      command =  centerRed2Speaker1Amp;
-   }  else if (!autoSwitch1.get() && autoSwitch2.get() && !autoSwitch3.get() && !autoSwitch4.get()) {
-      command =  centerBlue2Speaker1Amp;
-   }  else if (!autoSwitch1.get() && !autoSwitch2.get() && !autoSwitch3.get() && !autoSwitch4.get()) {
-      command =  leftRed1Spkr1AmpToMid;
-   }  else if (autoSwitch1.get() && autoSwitch2.get() && autoSwitch3.get() && autoSwitch4.get()) {
-      command =  rightBlue1Spkr1AmpToMid;
-   }  else if (!autoSwitch1.get() && autoSwitch2.get() && autoSwitch3.get() && !autoSwitch4.get()) {
-      command =  leftBlueToMidfield2;
-   }  else if (autoSwitch1.get() && !autoSwitch2.get() && !autoSwitch3.get() && autoSwitch4.get()) {
-      command =  rightRedToMidfield2;
-   }  else if (!autoSwitch1.get() && autoSwitch2.get() && !autoSwitch3.get() && autoSwitch4.get()) {
-      command =  l_WooferShotPullOut;
-   }  else if (autoSwitch1.get() && !autoSwitch2.get() && autoSwitch3.get() && !autoSwitch4.get()) {
-      command =  r_WooferShotPullOut;
-   }
+  //   if (!autoSwitch1.get() && autoSwitch2.get() && autoSwitch3.get() && autoSwitch4.get()) {
+  //     command = wooferLeft;
+  //   } else if (autoSwitch1.get() && !autoSwitch2.get() && autoSwitch3.get() && autoSwitch4.get()) {
+  //     command = frontTwoShots;
+  //   } else if (autoSwitch1.get() && autoSwitch2.get() && !autoSwitch3.get() && autoSwitch4.get()) {
+  //     command = oneWooferShot;
+  //   } else if (autoSwitch1.get() && autoSwitch2.get() && autoSwitch3.get() && !autoSwitch4.get()) {
+  //     command =  wooferRight;
+  //   } else if (!autoSwitch1.get() && !autoSwitch2.get() && autoSwitch3.get() && autoSwitch4.get()) {
+  //     command =  leftRedToMidfield2;
+  //   } else if (autoSwitch1.get() && autoSwitch2.get() && !autoSwitch3.get() && !autoSwitch4.get()) {
+  //     command = rightBlueToMidfield2;
+  //   } else if (!autoSwitch1.get() && !autoSwitch2.get() && !autoSwitch3.get() && autoSwitch4.get()) {
+  //     command = centerRedToMidfield3;
+  //   } else if (autoSwitch1.get() && !autoSwitch2.get() && !autoSwitch3.get() && !autoSwitch4.get()) {
+  //     command =  centerBlueToMidfield3;
+  //   } else if (!autoSwitch1.get() && !autoSwitch2.get() && autoSwitch3.get() && !autoSwitch4.get()) {
+  //     command =  centerRed2Speaker1Amp;
+  //  }  else if (!autoSwitch1.get() && autoSwitch2.get() && !autoSwitch3.get() && !autoSwitch4.get()) {
+  //     command =  centerBlue2Speaker1Amp;
+  //  }  else if (!autoSwitch1.get() && !autoSwitch2.get() && !autoSwitch3.get() && !autoSwitch4.get()) {
+  //     command =  leftRed1Spkr1AmpToMid;
+  //  }  else if (autoSwitch1.get() && autoSwitch2.get() && autoSwitch3.get() && autoSwitch4.get()) {
+  //     command =  rightBlue1Spkr1AmpToMid;
+  //  }  else if (!autoSwitch1.get() && autoSwitch2.get() && autoSwitch3.get() && !autoSwitch4.get()) {
+  //     command =  leftBlueToMidfield2;
+  //  }  else if (autoSwitch1.get() && !autoSwitch2.get() && !autoSwitch3.get() && autoSwitch4.get()) {
+  //     command =  rightRedToMidfield2;
+  //  }  else if (!autoSwitch1.get() && autoSwitch2.get() && !autoSwitch3.get() && autoSwitch4.get()) {
+  //     command =  l_WooferShotPullOut;
+  //  }  else if (autoSwitch1.get() && !autoSwitch2.get() && autoSwitch3.get() && !autoSwitch4.get()) {
+  //     command =  r_WooferShotPullOut;
+  //  }
    return command;
   }
 
