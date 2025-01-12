@@ -52,6 +52,5 @@ public class PIDUptoHeight extends Command {
   @Override
   public boolean isFinished() {
     return (elevator.isTop() || elevator.isETopLimit() || elevator.isEBotLimit());
-
   }
 }

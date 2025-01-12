@@ -6,7 +6,7 @@ package frc.robot.commands.Drive;
 
 import edu.wpi.first.wpilibj2.command.Command;
 
-import com.kauailabs.navx.frc.AHRS;
+import com.studica.frc.AHRS;
 import edu.wpi.first.math.controller.PIDController;
 import edu.wpi.first.wpilibj2.command.Command;
 import frc.robot.Constants;
